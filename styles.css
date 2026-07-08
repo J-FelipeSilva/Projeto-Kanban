@@ -4,6 +4,7 @@
   --coluna: #ebecf0;
   --post-it: #ffffff;
   --texto-body: #172b4d;
+  --add-post-it: #5e6c84;
   --tag-vermelho: #eb5a46;
   --tag-verde: #61bd4f;
   --tag-azul: #0079bf;
@@ -17,7 +18,7 @@
 }
 
 body {
-  font-family: aptos, Adobe Garamond Pro, tahoma, helvetica, Arial, sans-serif;
+  font-family: Aptos, Adobe Garamond Pro, Tahoma, Helvetica, Arial, sans-serif;
   background-color: var(--body);
   color: var(--texto-body);
   height: 100vh;
@@ -33,3 +34,53 @@ header {
   font-weight: bold;
 }
 
+/*container principal & colunas de tarefas*/
+.quadro {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+  overflow-x: auto;
+  align-items: flex-start;
+}
+.coluna {
+  back-ground-color: var(--coluna);
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+
+/*botão de adicionar post-it*/
+.add-post-it {
+  margin: 0px 10px 10px 10px;
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--add-post-it);
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s;
+}
+.add-post-it:hover {
+  background-color: #091e4214;
+  color: var(--texto-body);
+}
+
+/*personalização da barra de rolagem*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #0000001a;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffffff66;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff99;
+}
