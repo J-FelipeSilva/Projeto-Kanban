@@ -1,4 +1,5 @@
 :root {
+  --header: #00000026;
   --body: #0079bf;
   --coluna: #ebecf0;
   --post-it: #ffffff;
@@ -23,3 +24,12 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+header {
+  background-color: var(--header);
+  padding: 15px 20px;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
