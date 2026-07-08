@@ -3,8 +3,7 @@
   --body: #0079bf;
   --coluna: #ebecf0;
   --post-it: #ffffff;
-  --texto-body: #172b4d;
-  --add-post-it: #5e6c84;
+  --add-post-it: ;
   --tag-vermelho: #eb5a46;
   --tag-verde: #61bd4f;
   --tag-azul: #0079bf;
@@ -20,7 +19,7 @@
 
 body {
   background-color: var(--body);
-  color: var(--texto-body);
+  color: #172b4d;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -66,14 +65,14 @@ header {
   margin: 0px 10px 10px 10px;
   padding: 10px;
   border-radius: 6px;
-  color: var(--add-post-it);
+  color: #5e6c84;
   text-decoration: none;
   display: block;
   transition: background-color 0.2s;
 }
 .add-post-it:hover {
   background-color: #091e4214;
-  color: var(--texto-body);
+  color: #172b4d;
 }
 
 /*personalização da barra de rolagem*/
