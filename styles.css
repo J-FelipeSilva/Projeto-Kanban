@@ -1,6 +1,7 @@
+/*variáveis globais*/
 :root {
-  --header: #00000026;
   --body: #0079bf;
+  --header: #00000026;
   --coluna: #ebecf0;
   --post-it: #ffffff;
   --tag-vermelho: #eb5a46;
@@ -27,12 +28,12 @@ body {
 header {
   background-color: var(--header);
   padding: 15px 20px;
-  color: white;
+  color: #ffffffd9;
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-/*container principal & colunas de tarefas*/
+/*container principal, quadro de tarefas*/
 .quadro {
   display: flex;
   flex: 1;
@@ -63,6 +64,7 @@ header {
   padding: 0 10px 10px 10px;
   overflow-y: auto;
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 /*post-it em si*/
