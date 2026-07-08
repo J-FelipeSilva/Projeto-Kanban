@@ -16,10 +16,10 @@
 }
 
 body {
-  font-family: ;
+  font-family: aptos, Adobe Garamond Pro, tahoma, helvetica, Arial, sans-serif;
   background-color: var(--body);
   color: var(--texto-body);
-  height: ;
+  height: 100vh;
   display: flex;
-  flex-direction: center;
+  flex-direction: column;
 }
