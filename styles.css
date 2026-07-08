@@ -43,7 +43,7 @@ header {
   align-items: flex-start;
 }
 .coluna {
-  back-ground-color: var(--coluna);
+  background-color: var(--coluna);
   border-radius: 8px;
   min-width: 300px;
   max-width: 300px;
