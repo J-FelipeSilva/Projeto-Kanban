@@ -1,1 +1,25 @@
+:root {
+  --body: #0079bf;
+  --coluna: #ebecf0;
+  --post-it: #ffffff;
+  --texto-body: #172b4d;
+  --tag-vermelho: #eb5a46;
+  --tag-verde: #61bd4f;
+  --tag-azul: #0079bf;
+  --tag-amarelo: #f2d600;
+}
 
+* {
+  box-sizing: ;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: ;
+  background-color: var(--body);
+  color: var(--texto-body);
+  height: ;
+  display: flex;
+  flex-direction: center;
+}
