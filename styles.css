@@ -116,8 +116,8 @@ header {
   transition: background-color 0.2s;
 }
 .add-coluna:hover {
-  background-color: var(--coluna);
-  color: #172b4d;
+  background-color: #091e4214;
+  color: var(--coluna);
 }
 
 /*efeitos visuais para o arrastar e soltar os post-its*/
