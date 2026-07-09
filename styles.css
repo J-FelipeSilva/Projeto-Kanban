@@ -110,7 +110,6 @@ header {
   border-radius: 6px;
   color: #5e6c84;
   text-decoration: none;
-  display: block;
   transition: background-color 0.2s;
 }
 .add-coluna:hover {
