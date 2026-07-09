@@ -52,6 +52,7 @@ header {
   flex-direction: column;
   max-height: 100%;
 }
+/*div para poder colocar um contador ao lado do nome da etapa no Kanban*/
 .cabeçalho {
   padding: 12px 15px;
   font-weight: 600;
@@ -59,6 +60,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.contador {
+  background-color: #dfe1e6;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #5e6c84;
 }
 /*área em que os post-its ficarão*/
 .post-its {
