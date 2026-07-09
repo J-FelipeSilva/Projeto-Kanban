@@ -105,18 +105,12 @@ header {
 }
 /*botão de adicionar fluxo de trabalho*/
 .add-coluna {
-  width: 300px;
-  padding: 12px 16px;
-  box-sizing: border-box;
+  margin: 0 10px 10px 10px;
+  padding: 10px;
   border-radius: 6px;
-  background-color: var(--coluna);
   color: #5e6c84;
-  border: none;
-  cursor: pointer;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: block;
   transition: background-color 0.2s;
 }
 .add-coluna:hover {
