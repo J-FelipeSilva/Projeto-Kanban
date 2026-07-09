@@ -87,7 +87,7 @@ header {
   transition: background-color 0.2s, box-shadow 0.2s;
 }
 .post:hover {
-  background-color: #f4f5f7;
+  background-color: #f4f5f7; /*alterar essa cor para a cor da coluna*/
 }
 /*botão de adicionar tarefa*/
 .add-post-it {
