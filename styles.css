@@ -106,7 +106,8 @@ header {
 /*botão de adicionar fluxo de trabalho*/
 .add-coluna {
   margin: 0 10px 10px 10px;
-  padding: 10px;
+  padding: 10px 16px;
+  background-color: var(--coluna);
   border-radius: 6px;
   color: #5e6c84;
   text-decoration: none;
