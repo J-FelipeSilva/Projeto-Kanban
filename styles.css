@@ -61,6 +61,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+/*div para armazenar a informação de quantidade de post-its na coluna*/
 .contador {
   background-color: #dfe1e6;
   padding: 2px 8px;
