@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: Aptos, Adobe Garamond Pro, Tahoma, Helvetica, Arial, sans-serif;
+  font-family: Aptos, Tahoma, Helvetia, Arial, sans-serif;
   background-color: var(--body);
   color: #172b4d;
   height: 100vh;
@@ -55,7 +55,7 @@ header {
 .cabeçalho {
   padding: 12px 15px;
   font-weight: 600;
-  font-size: 1 rem;
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,25 +93,6 @@ header {
 .add-post-it:hover {
   background-color: #091e4214;
   color: #172b4d;
-}
-
-/*personalização da barra de rolagem*/
-::-webkit-scrollbar {
-  width: 8px;
-  height: 12px;
-}
-/*o "trilho" onde a barra de rolagem se move*/
-::-webkit-scrollbar-track {
-  background: #0000001a;
-  border-radius: 10px;
-}
-/*a barra em si, parte móvel*/
-::-webkit-scrollbar-thumb {
-  background: #ffffff66;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #ffffff99;
 }
 
 /*efeitos visuais para o arrastar e soltar os post-its*/
