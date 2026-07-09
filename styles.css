@@ -10,6 +10,7 @@
   --tag-amarelo: #f2d600;
 }
 
+/*garante que o padding e a borda sejam incluídos no tamanho de todos os elementos*/
 * {
   font-family: Aptos, Adobe Garamond Pro, Tahoma, Helvetica, Arial, sans-serif;
   box-sizing: border-box;
@@ -39,8 +40,8 @@ header {
   flex: 1;
   padding: 20px;
   gap: 20px;
-  overflow-x: auto;
-  align-items: flex-start;
+  overflow-x: auto; /*permite scroll horizontal se houver muitas colunas*/
+  align-items: flex-start; /*impede que as colunas estiquem até o final da tela*/
 }
 .coluna {
   background-color: var(--coluna);
@@ -62,7 +63,7 @@ header {
 /*área em que os post-its ficarão*/
 .post-its {
   padding: 0 10px 10px 10px;
-  overflow-y: auto;
+  overflow-y: auto; /*scroll vertical se a coluna estiver cheia*/
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -79,7 +80,6 @@ header {
 .post:hover {
   background-color: #f4f5f7;
 }
-
 /*botão de adicionar post-it*/
 .add-post-it {
   margin: 0 10px 10px 10px;
@@ -110,4 +110,15 @@ header {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff99;
+}
+
+/*efeitos visuais para o arrastar e soltar os post-its*/
+.post.arrastar {
+    opacity: 0.5;
+    transform: scale(0.95);
+    box-shadow: 0 5px 15px #00000026;
+}
+.post.soltar {
+    background-color: #091e420d;
+    border-radius: 6px;
 }
