@@ -4,7 +4,7 @@
     <meta charset="UTF-8"> <!--garante que o navegador interprete corretamente os caracteres especiais do documento-->
     <meta name="viewport" content="width=device-width, inicial-scale=1.0"> <!--garante que o layout seja responsivo-->
     <title>Kanban Web</title>
-    <link rel="stylesheet" type="text/css" href="styles.css"/> <!--linka o arquivo CSS externo-->
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
   </head>
 
   <body>
@@ -16,12 +16,14 @@
       <div class="coluna"> <!--é o container de cada coluna individual do quadro Kanban-->
         <div class="cabeçalho">
           <span>A Fazer</span>
-          <!--inplementar um contador de tarefas em javascript-->
+          <span class="contador">WIP</span>
         </div>
         <div class="post-its">
           <div class="post">
             <span>AJAX</span>
-            <!--tarefa em formato de post-it-->
+          </div>
+          <div class="post">
+            <span>javaScript</span>
           </div>
         </div>
         <a hef="#" class="add-post-it">+ Adicionar Tarefa</a>
@@ -30,12 +32,11 @@
       <div class="coluna">
         <div class="cabeçalho">
           <span>Em Andamento</span>
-          <!--inplementar um contador de tarefas em javaScript-->
+          <span class="contador">WIP</span>
         </div>
         <div class="post-its">
           <div class="post">
-            <span>html/CSS do Kanban</span>
-            <!--tarefa em formato de post-it-->
+            <span>HTML&CSS</span>
           </div>
         </div>
         <a hef="#" class="add-post-it">+ Adicionar Tarefa</a>
@@ -44,7 +45,7 @@
       <div class="coluna">
         <div class="cabeçalho">
           <span>Concluído</span>
-          <!--inplementar um contador de tarefas em javaScript-->
+          <span class="contador">WIP</span>
         </div>
         <div class="post-its">
           <div class="post">
@@ -53,8 +54,9 @@
         </div> 
         <a hef="#" class="add-post-it">+ Adicionar Tarefa</a>
       </div>
+      <a hef="#" class="add-coluna">+ Adicionar Fluxo de Trabalho</a>
     </div>
     
-    <script type="text/javascript" scr="script.js"></script> <!--linka o arquivo javaScript externo-->
+    <script type="text/javascript" scr="script.js"></script>
   </body>
 </html>
