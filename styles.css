@@ -103,6 +103,20 @@ header {
   background-color: #091e4214;
   color: #172b4d;
 }
+/*botão de adicionar fluxo de trabalho*/
+.add-coluna {
+  margin: 0 10px 10px 10px;
+  padding: 10px;
+  border-radius: 6px;
+  color: #5e6c84;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s;
+}
+.add-coluna:hover {
+  background-color: #091e4214;
+  color: #172b4d;
+}
 
 /*efeitos visuais para o arrastar e soltar os post-its*/
 .post.arrastar {
