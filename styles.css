@@ -116,7 +116,7 @@ header {
   transition: background-color 0.2s;
 }
 .add-coluna:hover {
-  background-color: #091e4214;
+  background-color: var(--coluna);
   color: #172b4d;
 }
 
