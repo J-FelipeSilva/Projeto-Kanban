@@ -100,10 +100,12 @@ header {
   width: 8px;
   height: 12px;
 }
+/*o "trilho" onde a barra de rolagem se move*/
 ::-webkit-scrollbar-track {
   background: #0000001a;
   border-radius: 10px;
 }
+/*a barra em si, parte móvel*/
 ::-webkit-scrollbar-thumb {
   background: #ffffff66;
   border-radius: 10px;
