@@ -1,109 +1,65 @@
+// Aguarda todo o conteúdo HTML (DOM) carregar antes de executar o script
 document.addEventListener("DOMContentLoaded", () => {
-  const postIt = document.querySelectorAll(".post");
-  const coluna = document.querySelectorAll(".post-it");
-  const addButton = document.querySelectorAll(".add-post-it");
-}
-// 1. Inicializar os cartões existentes como "arrastáveis"
-cards.forEach(card => {
-    card.setAttribute("draggable", "true");
-    addDragEvents(card);
-});
+    const posts = document.querySelectorAll(".post"); //Seleciona todas as tarefas (post-its)
+	//Seleciona todas as áreas onde as tarefas podem ser soltas
+    const containers = document.querySelectorAll('.post-its');
 
-// 2. Lógica de Arrastar e Soltar (Drag and Drop)
-function addDragEvents(card) {
-    card.addEventListener("dragstart", () => {
-        card.classList.add("dragging");
+    posts.forEach(post => {
+        // Garante que a tag HTML tenha a propriedade arrastar
+        post.setAttribute("draggable", "true");
+        // Função disparada no exato momento em que o usuário COMEÇA a arrastar
+        post.addEventListener("dragstart", () => {
+            // Adicionamos uma classe para dar um estilo visual (ex: deixar meio transparente)
+            post.classList.add('dragging');
+        });
+        // Função disparada no exato momento em que o usuário SOLTA o clique
+        post.addEventListener("dragend", () => {
+            // Removemos a classe visual quando o arrasto termina
+            post.classList.remove('dragging');
+        });
     });
 
-    card.addEventListener("dragend", () => {
-        card.classList.remove("dragging");
-        updateCardCounts();
-    });
-}
+    containers.forEach(container => {
+        // O evento 'dragover' é disparado continuamente enquanto algo é arrastado POR CIMA do container
+        container.addEventListener("dragover", e => {
+            // Previne o comportamento padrão da página (que proíbe soltar elementos por padrão)
+            e.preventDefault(); 
 
-columns.forEach(column => {
-    // Permite que o item seja solto na coluna
-    column.addEventListener("dragover", e => {
-        e.preventDefault();
-        column.classList.add("drag-over");
-        
-        // Descobre a posição exata para soltar o cartão entre os outros
-        const afterElement = getDragAfterElement(column, e.clientY);
-        const draggable = document.querySelector(".dragging");
-        
-        if (afterElement == null) {
-            column.appendChild(draggable);
-        } else {
-            column.insertBefore(draggable, afterElement);
-        }
-    });
+            // Identifica qual elemento está imediatamente abaixo do ponteiro do mouse
+            const afterElement = getDragAfterElement(container, e.clientY);
+            
+            // Pega o post que está sendo arrastado no momento (que tem a classe 'dragging')
+            const draggable = document.querySelector(".dragging");
 
-    // Remove o efeito visual quando o cartão sai da coluna
-    column.addEventListener("dragleave", () => {
-        column.classList.remove("drag-over");
+            // Se não houver nenhum elemento abaixo do mouse, joga a tarefa pro final da coluna
+            if (afterElement == null) {
+                container.appendChild(draggable);
+            } else {
+                // Caso contrário, insere a tarefa antes do elemento que está abaixo do mouse
+                container.insertBefore(draggable, afterElement);
+            }
+        });
     });
 
-    // Finaliza a ação de soltar
-    column.addEventListener("drop", () => {
-        column.classList.remove("drag-over");
-    });
-});
+    // Esta função descobre em qual vão entre as tarefas o mouse está posicionado
+    function getDragAfterElement(container, y) {
+        // Pega todos os posts dentro da coluna, EXCETO o que está sendo arrastado no momento
+        const draggableElements = [...container.querySelectorAll(".post:not(.dragging)")];
 
-// Função matemática para calcular onde o cartão deve cair (antes ou depois dos outros)
-function getDragAfterElement(container, y) {
-  const draggableElements = [...container.querySelectorAll(".post:not(.dragging)")];
+        // Compara a posição Y (vertical) do mouse com a posição de cada post
+        return draggableElements.reduce((closest, child) => {
+            // Pega o tamanho e posição do post atual do loop
+            const box = child.getBoundingClientRect();
+            // Calcula a distância entre o centro do post e o cursor do mouse
+            const offset = y - box.top - box.height / 2;
 
-  return draggableElements.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = y - box.top - box.height / 2;
-    if (offset < 0 && offset > closest.offset) {
-        return { offset: offset, element: child };
-    } else {
-        return closest;
+            // Se o mouse estiver acima do meio do elemento, e for o mais próximo até agora...
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        // Retorna apenas o elemento HTML descoberto na lógica acima
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
-  }, {offset: Number.NEGATIVE_INFINITY }).element;
-}
-
-// 3. Lógica para o botão "+ Adicionar cartão"
-addButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const columnCards = btn.previousElementSibling; // Pega a div .kanban-cards logo acima do botão
-        
-        // Usando um prompt simples para pegar o título da nova tarefa
-        const title = prompt("Digite o título da nova tarefa:");
-        
-        if (title && title.trim() !== "") {
-            // Cria o novo elemento HTML do cartão
-            const newCard = document.createElement("div");
-            newCard.classList.add("post");
-            newCard.setAttribute("draggable", "true");
-            
-            newCard.innerHTML = `
-                <div class="card-title">${title}</div>
-                <div class="card-footer">
-                    <span>📅 Novo</span>
-                    <div class="avatar">EU</div>
-                </div>
-            `;
-            
-            // Adiciona os eventos de arrastar ao novo cartão e joga ele na coluna
-            addDragEvents(newCard);
-            columnCards.appendChild(newCard);
-            updateCardCounts();
-        }
-    });
-});
-
-// 4. Atualizar o contador de tarefas nas colunas
-function updateCardCounts() {
-    const allColumns = document.querySelectorAll(".coluna");
-    allColumns.forEach(col => {
-        const count = col.querySelectorAll(".post").length;
-        const countElement = col.querySelector(".contador");
-        if (countElement) {
-            countElement.textContent = count;
-        }
-    });
-}
 });
