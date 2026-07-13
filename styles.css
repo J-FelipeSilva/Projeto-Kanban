@@ -117,14 +117,3 @@ header {
   background-color: #091e4214;
   color: #172b4d;
 }
-
-/*efeitos visuais para o arrastar e soltar os post-its*/
-.post.arrastar {
-    opacity: 0.5;
-    transform: scale(0.95);
-    box-shadow: 0 5px 15px #00000026;
-}
-.post.soltar {
-    background-color: #091e420d;
-    border-radius: 6px;
-}
