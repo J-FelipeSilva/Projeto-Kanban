@@ -9,55 +9,53 @@
 
 	<body>
 		<header>
+			<button type="button" class="add-coluna" onclick="criarFluxoDeTrabalho()">+ Adicionar Fluxo de Trabalho</button>
 			Kanban
 		</header>
-		<div class="quadro"> <!--é o container principal que contém todas as colunas do quadro Kanban-->
+		<div id="quadro" class="quadro"> <!--é o container principal que contém todas as colunas do quadro Kanban-->
 
-			<div class="coluna"> <!--é o container de cada coluna individual do quadro Kanban-->
+			<div id="coluna-1" class="coluna"> <!--é o container de cada coluna individual do quadro Kanban-->
 				<div class="cabeçalho">
 					<span>A Fazer</span>
 					<span class="contador">WIP</span>
+					<button type="button" class="editar"></button>
+				</div>
+				<div class="post-its" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+					<div id="tarefa-3" class="post" draggable="true" ondragstart="dragstartHandler(event)">
+						<span>AJAX & webStorageAPI</span>
+					</div>
+				</div>
+				<button type="button" class="add-post-it" onclick="criarTarefa(this)">+ Adicionar Tarefa</button>
+			</div>
+
+			<div id="coluna-2" class="coluna">
+				<div class="cabeçalho">
+					<span>Em Andamento</span>
+					<span class="contador">WIP</span>
+					<button type="button" class="editar"></button>
 				</div>
 				<div class="post-its" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
 					<div id="tarefa-1" class="post" draggable="true" ondragstart="dragstartHandler(event)">
-						<span>AJAX&webStorageAPI</span>
+						<span>HTML & CSS</span>
 					</div>
 					<div id="tarefa-2" class="post" draggable="true" ondragstart="dragstartHandler(event)">
 						<span>javaScript</span>
 					</div>
 				</div>
-				<button type="button" class="add-post-it">+ Adicionar Tarefa</button>
+				<button type="button" class="add-post-it" onclick="criarTarefa(this)">+ Adicionar Tarefa</button>
 			</div>
 
-			<div class="coluna">
-				<div class="cabeçalho">
-					<span>Em Andamento</span>
-					<span class="contador">WIP</span>
-				</div>
-				<div class="post-its" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
-					<div id="tarefa-3" class="post" draggable="true" ondragstart="dragstartHandler(event)">
-						<span>HTML&CSS</span>
-					</div>
-				</div>
-				<button type="button" class="add-post-it">+ Adicionar Tarefa</button>
-			</div>
-
-			<div class="coluna">
+			<div id="coluna-3" class="coluna">
 				<div class="cabeçalho">
 					<span>Concluído</span>
 					<span class="contador">WIP</span>
+					<button type="button" class="editar"></button>
 				</div>
 				<div class="post-its" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
-					<div id="tarefa-4" class="post" draggable="true" ondragstart="dragstartHandler(event)">
-					<!--tarefa em formato de post-it-->
-					</div>
+					
 				</div> 
-				<button type="button" class="add-post-it">+ Adicionar Tarefa</button>
-			</div>
-			<div class="coluna">
-				<button type="button" class="add-coluna">+ Adicionar Fluxo de Trabalho</button>
+				<button type="button" class="add-post-it" onclick="criarTarefa(this)">+ Adicionar Tarefa</button>
 			</div>
 		</div>
-		<script type="text/javascript" src="script.js"></script>
 	</body>
 </html>
