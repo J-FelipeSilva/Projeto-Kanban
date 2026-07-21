@@ -19,6 +19,7 @@ function criarTarefa(buttonElement) {
 	if (texto===null || texto.trim()=="") {
 		return;
 	}
+	
 	//cria os elementos necessários no DOM
 	const newDiv = document.createElement("div");
 	const newSpan = document.createElement("span");
@@ -28,6 +29,7 @@ function criarTarefa(buttonElement) {
 	newDiv.setAttribute("ondragstart", "dragstartHandler(event)");
 	newSpan.innerText = texto;
 	newDiv.appendChild(newSpan);
+	
 	//adiciona na coluna
 	const coluna = buttonElement.closest(".coluna");
 	if (coluna) {
@@ -42,11 +44,34 @@ function criarFluxoDeTrabalho() {
 	if (texto===null || texto.trim()=="") {
 		return;
 	}
-	
 	const quadro = document.getElementById("quadro");
 	const newColuna = document.createElement("div");
+	const newHeader = document.createElement("div");
+	const newDiv = document.createElement("div");
 	const newSpan = document.createElement("span");
+	const newButton = document.createElement("button");
 	
+	//cria uma nova coluna
 	newColuna.id = "coluna-" + Date.now();
 	newColuna.className = "coluna";
+	quadro.appendChild(newColuna);
+	
+	//cria a caixa do cabeçalho na coluna nova
+	newHeader.className = "header";
+	newSpan.innerText = (texto);
+	newHeader.appendChild(newSpan);
+	newColuna.appendChild(newHeader);
+	
+	//cria a caixa onde ficarão os post-its
+	newDiv.className = "post-its";
+	newDiv.setAttribute("ondrop", "dropHandler(event)");
+	newDiv.setAttribute("ondragover", "dragoverHandler(event)");
+	newColuna.appendChild(newDiv);
+	
+	//cria o botão de criar tarefa
+	newButton.setAttribute("type", "button");
+	newButton.className = "add-post-it";
+	newButton.setAttribute("onclick", "criarTarefa(this)");
+	newButton.innerText = "+ Adicionar Tarefa";
+	newColuna.appendChild(newButton);
 }
