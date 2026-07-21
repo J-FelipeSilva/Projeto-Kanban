@@ -19,7 +19,7 @@ function criarTarefa(buttonElement) {
 	if (texto===null || texto.trim()=="") {
 		return;
 	}
-	//cria os elementos necessários do DOM html
+	//cria os elementos necessários no DOM
 	const newDiv = document.createElement("div");
 	const newSpan = document.createElement("span");
 	newDiv.id = "tarefa-" + Date.now();
