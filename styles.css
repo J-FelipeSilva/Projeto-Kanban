@@ -53,7 +53,7 @@ header {
   max-height: 100%;
 }
 /*div para poder colocar um contador ao lado do nome da etapa no Kanban*/
-.cabeçalho {
+.header {
   padding: 12px 15px;
   font-weight: 600;
   font-size: 1rem;
