@@ -118,7 +118,7 @@ function editarColuna(buttonElement) {
 	//utiliza variáveis globais não constantes para armazenar informações fora da função
 	colunaApontada = buttonElement.closest(".coluna");
 	spanApontado = colunaApontada.querySelector(".header span:first-child");
-	const display = document.getElementById("editar-coluna");
+	const display = document.getElementById("janela-editar-coluna");
 	const input = document.getElementById("input");
 	input.value = spanApontado.innerText;
 	//executa o display que foi construido no html
@@ -127,15 +127,15 @@ function editarColuna(buttonElement) {
 function salvarColuna() {
 	if(input.value.trim()!==""){
 		spanApontado.innerText = input.value;
-		document.getElementById("editar-coluna").close();
+		document.getElementById("janela-editar-coluna").close();
 	}
 }
 function excluirColuna() {
 	colunaApontada.remove();
-	document.getElementById("editar-coluna").close();
+	document.getElementById("janela-editar-coluna").close();
 }
 function cancelar() {
-	document.getElementById("editar-coluna").close();
+	document.getElementById("janela-editar-coluna").close();
 }
 
 function excluirTarefa(buttonElement) {

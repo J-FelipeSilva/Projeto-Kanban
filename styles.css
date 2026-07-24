@@ -46,6 +46,7 @@ header {
   overflow-x: auto; /*permite scroll horizontal se houver muitas colunas*/
   align-items: flex-start; /*impede que as colunas estiquem até o final da tela*/
 }
+
 .coluna {
   background-color: var(--coluna);
   border-radius: 8px;
@@ -55,6 +56,7 @@ header {
   flex-direction: column;
   max-height: 100%;
 }
+
 /*div para poder colocar um contador ao lado do nome da etapa no Kanban*/
 .header {
   padding: 12px 15px;
@@ -64,6 +66,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+
 /*span para armazenar a informação de quantidade de post-its na coluna*/
 .contador {
   background-color: #dfe1e6;
@@ -72,6 +75,7 @@ header {
   font-size: 0.8rem;
   color: #5e6c84;
 }
+
 /*área em que os post-its ficarão*/
 .post-its {
   padding: 0 10px 10px 10px;
@@ -80,6 +84,7 @@ header {
   flex-direction: column;
   gap: 10px;
 }
+
 /*post-it em si*/
 .post {
   background-color: var(--post-it);
@@ -88,10 +93,16 @@ header {
   box-shadow: 0 1px 2px #091e4240;
   cursor: pointer;
   transition: background-color 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 .post:hover {
   background-color: #f4f5f7;
 }
+.post span {
+  line-height: 1.4;
+  word-break: break-word; /*quebra a palavra se ela for maior que o post-it*/
+}
+
 /*botão de adicionar tarefa*/
 .add-post-it {
   margin: 0 10px 10px 10px;
@@ -107,6 +118,7 @@ header {
   background-color: #091e4214;
   color: #172b4d;
 }
+
 /*botão de adicionar fluxo de trabalho*/
 .add-coluna {
   width: 300px;
@@ -128,17 +140,17 @@ header {
 }
 
 /*interface de edição de fluxo de trabalho*/
-.editar-coluna {
+.janela-editar-coluna {
   border: none;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 10px #0000004d;
   min-width: 300px;
 }
-.editar-coluna::backdrop {
+.janela-editar-coluna::backdrop {
   background-color: #00000080;
 }
-
+/*botões da janela de edição*/
 .excluir, .cancelar, .salvar {
   padding: 10px 20px;
   border-radius: 6px;
@@ -159,5 +171,7 @@ header {
   background: transparent;
   color: var(--tag-vermelho);
   display: flex;
-  
+  position: absolute;
+  right: 10px;
+  top: 12px;
 }
