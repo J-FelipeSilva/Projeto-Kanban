@@ -1,61 +1,90 @@
 <!DOCTYPE html> <!--indica que formato do documento é HTML5-->
+<!DOCTYPE html> <!--indica que formato do documento é HTML5-->
 <html lang="pt-BR"> <!--o atributo lang define o idioma do documento como português do Brasil-->
 	<head>
 		<meta charset="UTF-8"> <!--garante que o navegador interprete corretamente os caracteres especiais do documento-->
 		<meta name="viewport" content="width=device-width, inicial-scale=1.0"> <!--garante que o layout seja responsivo-->
 		<title>Kanban Web</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 
 	<body>
 		<header>
 			<button type="button" class="add-coluna" onclick="criarFluxoDeTrabalho()">+ Adicionar Fluxo de Trabalho</button>
-			Kanban
+			<p>Kanban</p>
 		</header>
-		<div id="quadro" class="quadro"> <!--é o container principal que contém todas as colunas do quadro Kanban-->
 
+		<div id="quadro" class="quadro"> <!--é o container principal que contém todas as colunas do quadro Kanban-->
 			<div id="coluna-1" class="coluna"> <!--é o container de cada coluna individual do quadro Kanban-->
 				<div class="header">
 					<span>A Fazer</span>
-					<span class="contador">WIP</span>
-					<button type="button" class="editar"></button>
+					<span class="contador"></span>
+					<button type="button" class="editarColuna" onclick="editarColuna(this)"><i class="material-icons">edit</i></button>
 				</div>
+
 				<div class="post-its" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
 					<div id="tarefa-3" class="post" draggable="true" ondragstart="dragstartHandler(event)">
+						<button type="button" class="excluirTarefa" onclick="excluirTarefa(this)"><i class="material-icons">close</i></button>	
 						<span>AJAX & webStorageAPI</span>
 					</div>
 				</div>
+
 				<button type="button" class="add-post-it" onclick="criarTarefa(this)">+ Adicionar Tarefa</button>
 			</div>
 
 			<div id="coluna-2" class="coluna">
 				<div class="header">
 					<span>Em Andamento</span>
-					<span class="contador">WIP</span>
-					<button type="button" class="editar"></button>
+					<span class="contador"></span>
+					<button type="button" class="editarColuna" onclick="editarColuna(this)"><i class="material-icons">edit</i></button>
 				</div>
+
 				<div class="post-its" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
 					<div id="tarefa-1" class="post" draggable="true" ondragstart="dragstartHandler(event)">
+						<button type="button" class="excluirTarefa" onclick="excluirTarefa(this)"><i class="material-icons">close</i></button>
 						<span>HTML & CSS</span>
 					</div>
+
 					<div id="tarefa-2" class="post" draggable="true" ondragstart="dragstartHandler(event)">
+						<button type="button" class="excluirTarefa" onclick="excluirTarefa(this)"><i class="material-icons">close</i></button>
 						<span>javaScript</span>
 					</div>
 				</div>
+
 				<button type="button" class="add-post-it" onclick="criarTarefa(this)">+ Adicionar Tarefa</button>
 			</div>
 
 			<div id="coluna-3" class="coluna">
 				<div class="header">
 					<span>Concluído</span>
-					<span class="contador">WIP</span>
-					<button type="button" class="editar"></button>
+					<span class="contador"></span>
+					<button type="button" class="editarColuna" onclick="editarColuna(this)"><i class="material-icons">edit</i></button>
 				</div>
+
 				<div class="post-its" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
-					
-				</div> 
+					<!--as tarefas ficarão aqui-->
+				</div>
+
 				<button type="button" class="add-post-it" onclick="criarTarefa(this)">+ Adicionar Tarefa</button>
 			</div>
 		</div>
+
+		<dialog id="editar-coluna"><!--caixa de diálogo personalizada para editar coluna-->
+			<span>Fluxo de Trabalho</span>
+
+			<div>
+				<label for="input">Título</label>
+				<input type="text" id="input"></input>
+			</div>
+
+			<div>
+				<button type="button" class="excluir" onclick="excluirColuna(this)">excluir</button>
+				<button type="button" class="cancelar" onclick="cancelar()">cancelar</button>
+				<button type="button" class="salvar" onclick="salvarColuna(this)">salvar</button>
+			</div>
+		</dialog>
+
+		<script type="text/javascript" src="script.js"></script>
 	</body>
 </html>
