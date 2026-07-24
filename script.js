@@ -22,14 +22,12 @@ function dropHandler(event) {
 	const info = event.dataTransfer.getData("text");
 	const localCerto = event.target.closest(".post-its");
 	if (localCerto) {
-		localCerto.appendChild(document.getElementById(info));
 		const tarefa = document.getElementById(info);
 		const colunaInicial = tarefa.closest(".coluna");
+		localCerto.appendChild(document.getElementById(info));
 		const colunaFinal = localCerto.closest(".coluna");
-		if(colunaInicial) {
+		if(colunaFinal !== colunaInicial) {
 			contador(colunaInicial);
-		}
-		if(colunaFinal) {
 			contador(colunaFinal);
 		}
 	} 
@@ -46,7 +44,6 @@ function criarTarefa(buttonElement) {
 	const newDiv = document.createElement("div");
 	const newSpan = document.createElement("span");
 	const newButton = document.createElement("button");
-	
 	newDiv.id = "tarefa-" + Date.now();
 	newDiv.className = "post";
 	newDiv.setAttribute("draggable", "true");
@@ -74,32 +71,37 @@ function criarFluxoDeTrabalho() {
 	if (texto===null || texto.trim()=="") {
 		return;
 	}
-	const quadro = document.getElementById("quadro");
-	const newColuna = document.createElement("div");
-	const newHeader = document.createElement("div");
-	const newDiv = document.createElement("div");
-	const newSpan = document.createElement("span");
-	const newButton = document.createElement("button");
-	const newButtonEditor = document.createElement("button");
 	
 	//cria uma nova coluna
+	const quadro = document.getElementById("quadro");
+	const newColuna = document.createElement("div");
 	newColuna.id = "coluna-" + Date.now();
 	newColuna.className = "coluna";
 	quadro.appendChild(newColuna);
 	
 	//cria a caixa do título na coluna nova
+	const newHeader = document.createElement("div");
 	newHeader.className = "header";
+	const newSpan = document.createElement("span");
 	newSpan.innerText = (texto);
 	newHeader.appendChild(newSpan);
 	newColuna.appendChild(newHeader);
 	
+	//cria o contador de tarefas na coluna nova
+	const newSpanContador = document.createElement("span");
+	newSpanContador.className = "contador";
+	newSpanContador.innerText = "0";
+	newHeader.appendChild(newSpanContador);
+
 	//cria a caixa onde ficarão os post-its
+	const newDiv = document.createElement("div");
 	newDiv.className = "post-its";
 	newDiv.setAttribute("ondrop", "dropHandler(event)");
 	newDiv.setAttribute("ondragover", "dragoverHandler(event)");
 	newColuna.appendChild(newDiv);
 	
 	//cria o botão de criar tarefa
+	const newButton = document.createElement("button");
 	newButton.setAttribute("type", "button");
 	newButton.className = "add-post-it";
 	newButton.setAttribute("onclick", "criarTarefa(this)");
@@ -107,6 +109,7 @@ function criarFluxoDeTrabalho() {
 	newColuna.appendChild(newButton);
 	
 	//cria o botão de editar a coluna
+	const newButtonEditor = document.createElement("button");
 	newButtonEditor.setAttribute("type", "button");
 	newButtonEditor.className = "editarColuna";
 	newButtonEditor.setAttribute("onclick", "editarColuna(this)");
@@ -140,10 +143,9 @@ function cancelar() {
 
 function excluirTarefa(buttonElement) {
 	const post = buttonElement.closest(".post");
+	const coluna = post.closest(".coluna");
 	post.remove();
-
 	//atualiza o contador da coluna
-	const coluna = buttonElement.closest(".coluna");
 	contador(coluna);
 }
 
